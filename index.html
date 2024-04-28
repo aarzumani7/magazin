@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="script/script1.js"></script>
+    <script src="script/script6.js"></script>
+    <script src="script/main.js"></script>
+    <script src="script/rating.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Document</title>
+</head>
+<body>
+    <header> <!-- шапка профиля -->
+        <div class="container">
+            <div class="row">
+                <div class="header_row">
+                        <div class="col-md-1">
+                            <div class="text2 number">
+                                <a href="#contact" class="text_2" href="">Контакты</a>
+                            </div>
+                        </div>
+                        <div class="number col-md-1">
+                            <div class="text3_1">
+                                <a href="#first" class="text_3_1" href="">Доставка</a>
+                            </div>
+                        </div>
+                        <div class="number col-md-1">
+                            <div class="text3_1">
+                                <a href="#second" class="text_3_1" href="">О нас</a>
+                            </div>
+                        </div>
+                        <div class="name col-md-6">
+                            <div class="text3">
+                                <p class="text_3" class="name_text3">AryaLigth</p>
+                            </div>
+                        </div>
+                        <div class="icon col-md-3"><!-- иконки -->
+                            <div class="icon1"> <!-- переход с иконки на форму со входом и регистрацией -->
+                                <button class="btn-open-popup open-popup" onclick="togglePopup()"> 
+                                    <img src="images/user.png" height="23px" width="23px" alt="">
+                                </button> 
+                                <div id="popupOverlay" class="overlay-container"> <!-- script6 для отктырия и закрытия окна -->
+                                    <div class="popup-box">
+                                        <button class="btn-close-popup close-popup" onclick="togglePopup()"><img src="images/close.png" alt=""></button>
+                                        <div class="popup-text">Вход</div>
+                                    <form class="form-container"> 
+                                        <label class="form-label" for="name">Логин:</label> 
+                                        <input class="form-input" type="text" placeholder="Введите ваш логин" id="name" name="name" required> 
+                                        <label class="form-label" for="pass">Password:</label> 
+                                        <input class="form-input" type="password" placeholder="Введите ваш пароль" id="email" name="email" required> 
+                            
+                                        <button class="btn-submit1" type="submit"> Войти </button> 
+                                        <button class="btn-submit2" type="submit" onclick="togglePopup1()">Зарегистрироваться </button> 
+                                    </form> 
+                                    </div> 
+                                </div> 
+                                <div id="popupOverlay2" class="overlay-container"> <!-- форма с регстрацией -->
+                                    <div class="popup-box1">
+                                        <button class="btn-close-popup close-popup" onclick="togglePopup1()"><img src="images/close.png" alt=""></button>
+                                        <div class="popup-text">Регистрация</div>
+                                    <form class="form-container"> 
+                                        <label class="form-label" for="name">Логин:</label> 
+                                        <input class="form-input" type="text" placeholder="Введите ваш логин" id="name" name="name" required> 
+                                        <label class="form-label" for="name">Телефон:</label> 
+                                        <input class="form-input" type="text" placeholder="8 (999) 765 77 77" id="name" name="name" required>
+                                        <label class="form-label" for="email">Password:</label> 
+                                        <input class="form-input" type="text" placeholder="Введите ваш пароль" id="email" name="email" required> 
+
+                                        <button class="btn-submit3" type="submit">Зарегистрироваться </button>
+                                    </form> 
+                                    </div>
+                                </div> 
+                            </div>          
+                            <div class="icon2">
+                                <a href="">
+                                    <img src="images/free-icon-add-to-favorites-4989206.png" height="23px" width="23px" alt="">
+                                </a>
+                            </div>
+                            <div class="icon3">
+                                <button class="btn-open-popup open-popup"> 
+                                    <img src="images/free-icon-shopping-bag-2956820.png" width="32px" height="32px" alt="">
+                                    <span class="cart-count">0</span>
+                                </button>
+                            </div>
+                            <div class="popup-overlay">
+                                <div class="popup">
+                                  <div class="cart">
+                                    <h2>Корзина</h2>
+                                    <div class="cart-items" ></div>
+                                    <div class="cart-total">
+                                      <p>Общая стоимость: <span class="total">0 ₽</span></p>
+                                    </div>
+                                  </div>
+                                  <button class="popup-close">Закрыть</button>
+                                </div>
+                            </div>
+                        <script> /*ОТКРЫТИЕ КОРЗИНЫ*/
+                            const iconBtn = document.querySelector('.icon3');
+                            const popupOverlay = document.querySelector('.popup-overlay');
+                            const popupClose = document.querySelector('.popup-close');
+
+                            iconBtn.addEventListener('click', function() {
+                            popupOverlay.style.display = 'block';
+                            });
+
+                            popupClose.addEventListener('click', function() {
+                            popupOverlay.style.display = 'none';
+                            });
+
+                            window.addEventListener('click', function(event) {
+                            if (event.target == popupOverlay) {
+                                popupOverlay.style.display = 'none';
+                            }
+                            });
+                            const cartCountElement = document.querySelector('.cart-count');
+                            const cartItemsElement = document.querySelector('.cart-items');
+                            
+                        </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="menu_row"><!-- список товаров -->
+                    <div class="menu_1 col-md-2">
+                        <div class="text4 number">
+                                <a class="text_4" href="">Серьги</a>
+                        </div>
+                    </div>
+                    <div class="menu_2 col-md-2">
+                        <div class="text5 number">
+                                <a class="text_5" href="">Кольца</a>
+                        </div>
+                    </div>
+                    <div class="menu_3 col-md-2">
+                        <div class="text6 number">
+                                <a class="text_6" href="">Браслеты</a>
+                        </div>
+                    </div>
+                    <div class="menu_4 col-md-2">
+                        <div class="text7 number">
+                                <a class="text_7" href="">Подвески</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+<main>
+    <div class="row"><!-- "реклама" -->
+            <div class="photo_main" id="baner1"><!-- 1 "реклама" -->
+                <div class="block"><!--блок для текста 1 рекламы поверх изображения-->
+                    <div class="text_block">
+                        <div class="text_block1">НАСТРОЕНИЕ - <br> ВЕСНА</div>
+                        <div class="text_block2">время обновить ювелирный гардероб</div>
+                    </div>
+                    <div class="button_block1">
+                        <button class="button_block_1">
+                            <div class="button_text">Подробнее ></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo_main2" id="baner2" style="display: none;"><!-- 2 "реклама" -->
+                <div class="block"><!--блок для текста 2 рекламы поверх изображения-->
+                    <div class="text_block">
+                        <div class="text_block3">SALE ДО -40%</div>
+                        <div class="text_block4">на избранные урашения до 3 апреля</div>
+                    </div>
+                    <div class="button_block2">
+                        <button class="button_block_2">
+                            <div class="button_text">Подробнее ></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+    <script>//script для банера/рекламы
+        const baner1 = document.getElementById('baner1');
+        const baner2 = document.getElementById('baner2');
+
+        function swapBlocks() {
+            if (baner1.style.display === 'none') {
+                baner1.style.display = 'block';
+                baner2.style.display = 'none';
+            } else {
+                baner1.style.display = 'none';
+                baner2.style.display = 'block';
+            }
+        }
+        // Вызов функции через определенное время бесконечное число раз
+        setInterval(swapBlocks, 5000);
+    </script>
+
+    </div>
+        <div class="container">
+            <div class="row"><!--3 карточки товаров-->
+                <div class="earrings_title">
+                    <div class="title">
+                        БЕСТСЕЛЛЕРЫ
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="earrings">
+                    <div id="gallery1" class="earrings_1 col-md-5"><!--script1.js 1 карточка -->
+                        <div class="img_earrings_1">
+                            <img id="image1" src="images/1.png" width="180" height="180" alt=""> 
+                        </div>
+                        <div class="button-container_1">
+                            <button onclick="previousImage('gallery1')" class="button_1" class="prev_button"></button>
+                            <button onclick="nextImage('gallery1')" class="button_2" class="next_button"></button>
+                        </div> 
+                        <div class="zena_earrings_1">
+                            от <b>30 599 ₽</b>
+                        </div>
+                        <div class="text_earrings_1">
+                            Серьги из белого золота 750 пробы с бриллиантами
+                        </div>
+                        
+                        <div class="button_earrings_1">
+                            <button class="button_click" data-product-id="1">
+                                <p class="p1">В корзину</p>
+                            </button>
+                            <button class="button_click1">
+                                <p class="p1" onclick="togglePopup2()">Просмотр</p>
+                            </button>
+                            <div id="popupOverlay3" class="overlay-container3"> <!-- script6 для отктырия и закрытия окна -->
+                                <div class="popup-box3">
+                                    <button class="btn-close-popup close-popup" onclick="togglePopup2()"><img src="images/close.png" alt=""></button>
+                                    <div class="row obzor_row">
+                                        <div class="container_card">
+                                            <div class="card">
+                                                <img id="main-image" class="img_obzor" src="images/1.png">
+                                                <div class="more-images">
+                                                  <img src="images/2.png"  onmouseover="changeImage('images/2.png')" onmouseout="resetImage()">
+                                                  <img src="images/1_1.png" onmouseover="changeImage('images/1_1.png')" onmouseout="resetImage()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="opisanie">
+                                            <div class="title1_opisanie"> Серьги из белого золота 750 пробы с бриллиантами</div>
+                                            <div class="opisanie2">
+                                                <div class="title2_opisanie"> Характеристика</div>
+                                                <div class="text1_opisanie"> Артикул  ........................................................................................ 1C552511</div>
+                                                <div class="text2_opisanie"> Металл ........................................................................ Белое Золото 750</div>
+                                                <div class="text3_opisanie"> Вставки   .................................................................................................. 24</div>
+                                                <div class="text4_opisanie"> Вес вставок   .............................................................................. 2.27 карат</div>
+                                                <div class="text5_opisanie"> Вес украшения   ................................................................................ 4.07 г</div>
+                                                <div class="text6_opisanie"> Стиль   ............................................................................................. Fashion</div>
+                                            </div>
+                                            <div class="zena">
+                                                <div class="text_zena">Цена</div>
+                                                <div class="text_stoimost">30 599 ₽</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text_otzuv">
+                                        <div class="title_otzuv">
+                                            Отзывы пользователей
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <div class="review">
+                                        <div class="reviewName">Арина</div>
+                                        <div class="reviewRate">★★★★</div>
+                                            <div class="reviewText">Очень красивые. Удобно, что застежка закручивающаяся.</div>
+                                        </div>
+
+                                        <div class="review">
+                                            <div class="reviewName">Кристина</div>
+                                            <div class="reviewRate">★★★★★</div>
+                                            <div class="reviewText">очень красивые,нежные</div>
+                                        </div>
+
+                                        <div class="review">
+                                            <div class="reviewName">Мария</div>
+                                            <div class="reviewRate"> ★★★★</div>
+                                            <div class="reviewText">Серёжки очень красивые. Камни переливаются. Очень понравился дизайн.</div>
+                                        </div>
+                                    </div>
+                                    <div class="reviewWrite">
+                                        <div class="Writerewiew">
+                                            Оставить отзыв
+                                        </div>
+                                    </div>
+                                    <div class="reviewsBlock">
+                                        <div class="reviewBlock">
+                                            <div class="ratingBlock">
+                                                <div class="estimation">Оцените товар</div>
+                                                <div class="rating">
+                                                    <span class="star" onclick="selectRating(1)">&#9734;</span>
+                                                    <span class="star" onclick="selectRating(2)">&#9734;</span>
+                                                    <span class="star" onclick="selectRating(3)">&#9734;</span>
+                                                    <span class="star" onclick="selectRating(4)">&#9734;</span>
+                                                    <span class="star" onclick="selectRating(5)">&#9734;</span>
+                                                </div>
+                                            </div>
+                                            <form id="review-form">
+                                            
+                                                <div class="form-group">
+                                                  <label for="review" class="OtzuvLabel">Комментарий к товару:</label>
+                                                  <textarea id="review" name="review" rows="5" required></textarea>
+                                                </div>
+                                              
+                                                <div class="form-group">
+                                                  <label for="files" clas="OtzuvLabel">Прикрепить файлы:</label>
+                                                  <input type="file" id="files" name="files" multiple>
+                                                </div>
+                                              
+                                                <button type="submit" class="btn">Оставить отзыв</button>
+                                              </form>
+                                              
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <script>
+                                function changeImage(imagesUrl) {
+                                  document.getElementById('main-image').src = imagesUrl;
+                                }
+                            
+                                function resetImage() {
+                                  document.getElementById('main-image').src = 'images/1.png';
+                                }
+                              </script> 
+                        </div>  
+                    </div>
+
+                    <div id="gallery2" class="earrings_2 col-md-5"><!--script1.js 2 карточка -->
+                        <div class="img_earrings_2">
+                            <img id="image2" src="images/3.png" width="180" height="180" alt=""> 
+                        </div>
+                        <div class="button-container_2">
+                            <button onclick="previousImage1('gallery2')" class="button_1" class="prev_button1"></button>
+                            <button onclick="nextImage1('gallery2')" class="button_2" class="next_button1"></button>
+                        </div> 
+                        <div class="zena_earrings_1">
+                            от <b>21 599 ₽</b>
+                        </div>
+                        <div class="text_earrings_1">
+                            Пусеты из белого золота 585 пробы с бриллиантами
+                        </div>
+                        <div class="button_earrings_1">
+                            <button class="button_click" data-product-id="2">
+                                <p class="p1">В корзину</p>
+                            </button>
+                            <button class="button_click1">
+                                <p class="p1" onclick="togglePopup4()">Просмотр</p>
+                            </button>
+                            <div id="popupOverlay4" class="overlay-container3"> <!-- script6 для отктырия и закрытия окна -->
+                                <div class="popup-box3">
+                                    <button class="btn-close-popup close-popup" onclick="togglePopup4()"><img src="images/close.png" alt=""></button>
+                                    <div class="row obzor_row">
+                                        <div class="container_card">
+                                            <div class="card">
+                                                <img id="main-image2" class="img_obzor" src="images/3.png">
+                                                <div class="more-images">
+                                                  <img src="images/4.png"  onmouseover="changeImage1('images/4.png')" onmouseout="resetImage1()">
+                                                  <img src="images/2024-04-28_11-43-59.png" onmouseover="changeImage1('images/2024-04-28_11-43-59.png')" onmouseout="resetImage1()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="opisanie">
+                                            <div class="title1_opisanie"> Пусеты из белого золота 585 пробы с бриллиантами</div>
+                                            <div class="opisanie2">
+                                                <div class="title2_opisanie"> Характеристика</div>
+                                                <div class="text1_opisanie"> Артикул  ........................................................................................ 9P451B21</div>
+                                                <div class="text2_opisanie"> Металл ........................................................................ Белое Золото 585</div>
+                                                <div class="text3_opisanie"> Вставки   .................................................................................................. 98</div>
+                                                <div class="text4_opisanie"> Вес вставок   .............................................................................. 0.84 карат</div>
+                                                <div class="text5_opisanie"> Вес украшения   ................................................................................ 3.57 г</div>
+                                                <div class="text6_opisanie"> Стиль   ............................................................................................. Fashion</div>
+                                            </div>
+                                            <div class="zena">
+                                                <div class="text_zena">Цена</div>
+                                                <div class="text_stoimost">21 599 ₽</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text_otzuv">
+                                        <div class="title_otzuv">
+                                            Отзывы пользователей
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <div class="review">
+                                        <div class="reviewName">Арина</div>
+                                        <div class="reviewRate">★★★★</div>
+                                            <div class="reviewText">Очень красивые. Удобно, что застежка закручивающаяся.</div>
+                                        </div>
+
+                                        <div class="review">
+                                            <div class="reviewName">Кристина</div>
+                                            <div class="reviewRate">★★★★★</div>
+                                            <div class="reviewText">очень красивые,нежные</div>
+                                        </div>
+
+                                        <div class="review">
+                                            <div class="reviewName">Мария</div>
+                                            <div class="reviewRate"> ★★★★</div>
+                                            <div class="reviewText">Серёжки очень красивые. Камни переливаются. Очень понравился дизайн.</div>
+                                        </div>
+                                    </div>
+                                    <div class="reviewWrite">
+                                        <div class="Writerewiew">
+                                            Оставить отзыв
+                                        </div>
+                                    </div>
+                                    <div class="reviewsBlock">
+                                        <div class="reviewBlock">
+                                            <div class="ratingBlock">
+                                                <div class="estimation">Оцените товар</div>
+                                                <div class="rating2">
+                                                    <span class="star1" onclick="selectRating2(1)">&#9734;</span>
+                                                    <span class="star1" onclick="selectRating2(2)">&#9734;</span>
+                                                    <span class="star1" onclick="selectRating2(3)">&#9734;</span>
+                                                    <span class="star1" onclick="selectRating2(4)">&#9734;</span>
+                                                    <span class="star1" onclick="selectRating2(5)">&#9734;</span>
+                                                </div>
+                                            </div>
+                                            <form id="review-form">
+                                            
+                                                <div class="form-group">
+                                                  <label for="review" class="OtzuvLabel">Комментарий к товару:</label>
+                                                  <textarea id="review" name="review" rows="5" required></textarea>
+                                                </div>
+                                              
+                                                <div class="form-group">
+                                                  <label for="files" clas="OtzuvLabel">Прикрепить файлы:</label>
+                                                  <input type="file" id="files" name="files" multiple>
+                                                </div>
+                                              
+                                                <button type="submit" class="btn">Оставить отзыв</button>
+                                              </form>
+                                              
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <script>
+                                function changeImage2(imagesUrl) {
+                                  document.getElementById('main-image2').src = imagesUrl;
+                                }
+                            
+                                function resetImage2() {
+                                  document.getElementById('main-image2').src = 'images/3.png';
+                                }
+                              </script> 
+                        </div>
+                    </div>
+
+                    <div id="gallery3" class="earrings_3 col-md-5"><!--script1.js 3 карточка -->
+                        <div class="img_earrings_3">
+                            <img id="image3" src="images/5.png" width="180" height="180" alt=""> 
+                        </div>
+                        <div class="button-container_3">
+                            <button onclick="previousImage2('gallery3')" class="button_1" class="prev_button3"></button>
+                            <button onclick="nextImage2('gallery3')" class="button_2" class="next_button3"></button>
+                        </div> 
+                        <div class="zena_earrings_1">
+                            от <b>55 599 ₽</b>
+                        </div>
+                        <div class="text_earrings_1">
+                            Кольцо из белого золота 585 пробы с бриллиантами
+                        </div>
+                        <div class="button_earrings_1" >
+                            <button class="button_click" data-product-id="3">
+                                <p class="p1">В корзину</p>
+                            </button>
+                            <button class="button_click1">
+                                <p class="p1" onclick="togglePopup5()">Просмотр</p>
+                            </button>
+                            <div id="popupOverlay5" class="overlay-container3"> <!-- script6 для отктырия и закрытия окна -->
+                                <div class="popup-box3">
+                                    <button class="btn-close-popup close-popup" onclick="togglePopup5()"><img src="images/close.png" alt=""></button>
+                                    <div class="row obzor_row">
+                                        <div class="container_card">
+                                            <div class="card">
+                                                <img id="main-image3" class="img_obzor" src="images/5.png">
+                                                <div class="more-images">
+                                                  <img src="images/6.png"  onmouseover="changeImage2('images/6.png')" onmouseout="resetImage2()">
+                                                  <img src="images/2024-04-28_12-22-10.png" onmouseover="changeImage2('images/2024-04-28_12-22-10.png')" onmouseout="resetImage2()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="opisanie">
+                                            <div class="title1_opisanie"> Кольцо из белого золота 585 пробы с бриллиантами</div>
+                                            <div class="opisanie2">
+                                                <div class="title2_opisanie"> Характеристика</div>
+                                                <div class="text1_opisanie"> Артикул  ........................................................................................ 0P074G21</div>
+                                                <div class="text2_opisanie"> Металл ........................................................................ Белое Золото 585</div>
+                                                <div class="text3_opisanie"> Вставки   .................................................................................................. 25</div>
+                                                <div class="text4_opisanie"> Вес вставок   .............................................................................. 0.48 карат</div>
+                                                <div class="text5_opisanie"> Вес украшения   ................................................................................ 3.8 г</div>
+                                                <div class="text6_opisanie"> Стиль   ............................................................................................. Дорожка</div>
+                                            </div>
+                                            <div class="zena">
+                                                <div class="text_zena">Цена</div>
+                                                <div class="text_stoimost">55 599 ₽</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text_otzuv">
+                                        <div class="title_otzuv">
+                                            Отзывы пользователей
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <div class="review">
+                                        <div class="reviewName">Арина</div>
+                                        <div class="reviewRate">★★★★</div>
+                                            <div class="reviewText">Очень красивые. Удобно, что застежка закручивающаяся.</div>
+                                        </div>
+
+                                        <div class="review">
+                                            <div class="reviewName">Кристина</div>
+                                            <div class="reviewRate">★★★★★</div>
+                                            <div class="reviewText">очень красивые,нежные</div>
+                                        </div>
+
+                                        <div class="review">
+                                            <div class="reviewName">Мария</div>
+                                            <div class="reviewRate"> ★★★★</div>
+                                            <div class="reviewText">Серёжки очень красивые. Камни переливаются. Очень понравился дизайн.</div>
+                                        </div>
+                                    </div>
+                                    <div class="reviewWrite">
+                                        <div class="Writerewiew">
+                                            Оставить отзыв
+                                        </div>
+                                    </div>
+                                    <div class="reviewsBlock">
+                                        <div class="reviewBlock">
+                                            <div class="ratingBlock">
+                                                <div class="estimation">Оцените товар</div>
+                                                <div class="rating3">
+                                                    <span class="star2" onclick="selectRating3(1)">&#9734;</span>
+                                                    <span class="star2" onclick="selectRating3(2)">&#9734;</span>
+                                                    <span class="star2" onclick="selectRating3(3)">&#9734;</span>
+                                                    <span class="star2" onclick="selectRating3(4)">&#9734;</span>
+                                                    <span class="star2" onclick="selectRating3(5)">&#9734;</span>
+                                                </div>
+                                            </div>
+                                            <form id="review-form">
+                                            
+                                                <div class="form-group">
+                                                  <label for="review" class="OtzuvLabel">Комментарий к товару:</label>
+                                                  <textarea id="review" name="review" rows="5" required></textarea>
+                                                </div>
+                                              
+                                                <div class="form-group">
+                                                  <label for="files" clas="OtzuvLabel">Прикрепить файлы:</label>
+                                                  <input type="file" id="files" name="files" multiple>
+                                                </div>
+                                              
+                                                <button type="submit" class="btn">Оставить отзыв</button>
+                                              </form>
+                                              
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <script>
+                                function changeImage3(imagesUrl) {
+                                  document.getElementById('main-image3').src = imagesUrl;
+                                }
+                            
+                                function resetImage3() {
+                                  document.getElementById('main-image3').src = 'images/5.png';
+                                }
+                              </script> 
+                        </div>
+                        <script src="main2.js"></script>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="cart">
+                <h2>Корзина</h2>
+                <div class="cart-items"></div>
+                <div class="cart-total">
+                  <p>Общая стоимость: <span class="total">0 ₽</span></p>
+                </div>
+            </div>
+                 -->
+            <div class="row"><!--блок с дополнительной информацией -->
+                <div class="block_info_1">
+                    <div class="block1">
+                            <div class="title1">
+                                ТО, ЧТО НУЖНО КАЖДОЙ ДЕВУШКЕ
+                            </div>
+                            <div class="title2">
+                                НЕЖНОСТЬ И РОМАНТИКА
+                            </div>
+                            <div class="photo_1">
+                                <img src="images/block1.png" width="400" height="400" alt="">
+                            </div>
+                    </div>
+                    <div class="block2">
+                            <div class="title3">
+                                ЦВЕТНЫЕ КАМНИ ДЛЯ НАСТРОЕНИЯ
+                            </div>
+                            <div class="title4">
+                               СИЯЕМ ЯРЧЕ ВСЕХ
+                            </div>
+                            <div class="photo_1">
+                                <img src="images/block2.png" width="400" height="400" alt="">
+                            </div>
+                    </div>
+                    <div class="block3">
+                            <div class="title5">
+                                ЮВЕЛИРНАЯ БАЗА
+                            </div>
+                            <div class="title6">
+                                СЕКРЕТ УСПЕШНОГО ОБРАЗА
+                            </div>
+                            <div class="photo_1">
+                                <img src="images/block3.png" width="400" height="400"  alt="">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <diw class="row"><!--4-6 карточки товаров-->
+                <div class="earrings_title">
+                    <div class="title">
+                        ВЕСЕННИЕ НОВИНКИ
+                    </div>
+                </div>
+            </diw>
+            <div class="row">
+                <div class="earrings">
+                    <div id="gallery4" class="earrings_3 col-md-5"><!--script1.js 4 карточка -->
+                        <div class="img_earrings_3">
+                            <img id="image4" src="images/7.png" width="180" height="180" alt=""> 
+                        </div>
+                        <div class="button-container_3">
+                            <button onclick="previousImage3('gallery4')" class="button_1" class="prev_button4"></button>
+                            <button onclick="nextImage3('gallery4')" class="button_2" class="next_button4"></button>
+                        </div> 
+                        <div class="zena_earrings_1">
+                            от <b>50 599 ₽</b>
+                        </div>
+                        <div class="text_earrings_1">
+                            Кольцо из белого золота 750 пробы с бриллиантами
+                        </div>
+                        <div class="button_earrings_1">
+                            <button class="button_click">
+                                <p class="p1">Выбрать</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="gallery5" class="earrings_3 col-md-5">
+                        <div class="img_earrings_3">
+                            <img id="image5" src="images/13.png" width="180" height="180" alt=""> 
+                        </div>
+                        <div class="button-container_3">
+                            <button onclick="previousImage4('gallery5')" class="button_1" class="prev_button3"></button>
+                            <button onclick="nextImage4('gallery5')" class="button_2" class="next_button3"></button>
+                        </div> 
+                        <div class="zena_earrings_1">
+                            от <b>45 599 ₽</b>
+                        </div>
+                        <div class="text_earrings_1">
+                            Браслет из белого золота 585 пробы с бриллиантами
+                        </div>
+                        <div class="button_earrings_1">
+                            <button class="button_click">
+                                <p class="p1">Выбрать</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="gallery6" class="earrings_3 col-md-5">
+                        <div class="img_earrings_3">
+                            <img id="image6" src="images/9.png" width="180" height="180" alt=""> 
+                        </div>
+                        <div class="button-container_3">
+                            <button onclick="previousImage5('gallery6')" class="button_1" class="prev_button3"></button>
+                            <button onclick="nextImage5('gallery6')" class="button_2" class="next_button3"></button>
+                        </div> 
+                        <div class="zena_earrings_1">
+                            от <b>40 599 ₽</b>
+                        </div>
+                        <div class="text_earrings_1">
+                            Подвеска из белого золота 585 пробы с бриллиантами
+                        </div>
+                        <div class="button_earrings_1">
+                            <button class="button_click">
+                                <p class="p1">Выбрать</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row"><!--доставка товаров-->
+                <div class="dostavka">
+                    <div class="dostavka_text col-md-7">
+                        <div id="first" class="title_dostavka">
+                            Доставка
+                        </div>
+                        <div class="text_dostavka">
+                            <p style="font-weight: bold; font-size: 20px;">Доставка по Ростову-на-Дону и Ростовской области</p>
+                            <p style="font-size: 16px;">
+                            Доставка заказа до 10 000 руб. платная - 1000 руб. <br>Доставляется на следующий день в интервалы: 10-14, 14-18, 18-22. <br><br>
+                            При сумме заказа от 10 000 руб. доставка бесплатная.
+                            Осуществляется в день <br> оформления заказа при условии, что заказ, оформлен до 14 ч. <br><br>
+                            При доставке заказа до 10 000 р. в салон (самовывоз), клиент оплачивает  <br> доставку в размере 500 руб.
+                            В случае отказа клиента от заказа при <br>доставке штатным курьером, клиент возмещает курьерские расходы - 1000 руб. <br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="dostavka_photo col-md-4">
+                        <img src="images/dostavka.png" width="600" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row"><!--доставка товаров-->
+                <div class="Compani">
+                    <div class="compani_text">
+                        <div id="second" class="title_compani">
+                            О компании
+                        </div>
+                        <div class="text_compani">
+                            В AryaLight мы создаем изысканные ювелирные украшения, воплощающие многовековые традиции русского мастерства и современный дизайн.
+                            Наша компания берет начало в начале XX века и основана потомственным ювелиром Арсением Лихтбергом в Санкт-Петербурге. <br><br>
+                            На протяжении более 100 лет мастера AryaLight передают из поколения в поколение секреты создания роскошных изделий ручной работы, сочетающих стиль, качество и внимание к деталям.
+                            От аристократии императорской России до современной элиты – украшения AryaLight всегда были олицетворением истинного вкуса и элегантности. <br><br>
+                            Сегодня бутики AryaLight с центром в Ростове представлены по всему миру. Мы предлагаем уникальные коллекции колец, подвесок, браслетов и других драгоценных украшений, способных наполнить ваш дом теплом и роскошью. 
+                            Откройте для себя магию AryaLight и создайте по-настоящему неповторимый стиль!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="row ">
+                <div class="footer1">
+                    <div class="footer_1">
+                        <p style="font-size: 16px; opacity: 0.9;">Кабинет</p>
+                        <p style="font-size: 20px;">
+                            Личный кабинет<br>
+                            Избранное<br>
+                            Мои заказы<br>
+                            Отследить заказ<br>
+                        </p>
+                        <br><br>
+                        <p style="font-size: 16px; opacity: 0.9;">Полезное</p>
+                        <p style="font-size: 20px;">
+                            Подарочные сертификаты<br>
+                            Как подобрать размер изделия<br>
+                            Услуга чистки украшений<br> 
+                        </p>
+                    </div>
+                    <div class="footer_2">
+                        <p style="font-size: 16px; opacity: 0.9;">Помощь</p>
+                        <p style="font-size: 20px;">
+                            Гарантия<br>
+                            Оплата и доставка<br>
+                            Помощь покупателям<br>
+                            Примерка <br>
+                            Сертификация <br>
+                            Вопросы и ответы <br>
+                            Задать вопрос <br>
+                        </p>
+                    </div>
+                    <div id="contact" class="footer_3">
+                        <p style="font-size: 16px; opacity: 0.9;">Контакты</p>
+                        <p style="font-size: 20px;">
+                            Адрес: <br>
+                            ул. Московская 7/5<br><br>
+                            Номер телефона: <br>
+                            8 (956) 123 23 23
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
